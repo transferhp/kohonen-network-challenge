@@ -1,3 +1,18 @@
+# Ignore folders
 .idea/
+
+# Environment
 .venv/
+
+# Notebook staff
 .ipynb_checkpoints/
+
+# Distribution / packaging
+dist/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# System
+.DS_Store
