@@ -56,18 +56,9 @@ class SOM(object):
         Returns:
             index of the node (BMU) in SOM
         """
-        bmu_idx = np.array([0, 0])
-        min_dist = np.iinfo(np.int).max
-
-        # calculate the distance between each neuron and the input
-        for x in range(self._height):
-            for y in range(self._width):
-                w = self._map[x, y, :]
-                dist = np.sqrt(np.sum((w - input_vect) ** 2))
-                if dist < min_dist:
-                    min_dist = dist
-                    bmu_idx = np.array([x, y])
-        return bmu_idx
+        dist_mat = np.sqrt(np.sum((self._map - input_vect)**2, axis=2))
+        bmu_idx = np.where(dist_mat == np.amin(dist_mat))
+        return np.array(bmu_idx).reshape(-1)
 
 
     @staticmethod
